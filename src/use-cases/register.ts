@@ -1,5 +1,7 @@
 import { OrgsRepository } from '@/repositories/orgs-repository'
 import { Org } from '@prisma/client'
+import { hash } from 'bcryptjs'
+import { randomUUID } from 'crypto'
 
 interface RegisterUseCaseRequest {
   user: string
@@ -22,5 +24,26 @@ export class RegisterUseCase {
     city,
     adress,
     phone,
-  }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {}
+  }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
+    const passwordHash = await hash(password, 6)
+
+    const orgAlredyExists = await this.orgsRepository.findByUser(user)
+
+    if (orgAlredyExists) {
+      throw new Error('User alredy exists')
+    }
+
+    const org = await this.orgsRepository.register({
+      id: randomUUID(),
+      user,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      passwordHash,
+      city,
+      adress,
+      phone,
+    })
+
+    return { org }
+  }
 }

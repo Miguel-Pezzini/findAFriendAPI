@@ -10,14 +10,24 @@ export class InMemoryOrgsRepository implements OrgsRepository {
       user: data.user,
       createdAt: new Date() || data.createdAt,
       updatedAt: new Date() || data.updatedAt,
-      passwordHash: data.user,
+      passwordHash: data.passwordHash,
       city: data.city,
-      adress: data.city,
+      adress: data.adress,
       phone: data.phone,
     }
 
     this.items.push(org)
 
     return org
+  }
+
+  async findByUser(user: string) {
+    const org = this.items.find((element) => element.user === user)
+
+    return org
+  }
+
+  async findPetByCity(city: string) {
+    const allPetsFromCity = this.items.map((element) => element.city)
   }
 }

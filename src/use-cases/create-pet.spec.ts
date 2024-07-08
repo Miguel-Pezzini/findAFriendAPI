@@ -1,6 +1,6 @@
-import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { describe, expect, it } from 'vitest'
 import { CreatePetUseCase } from './create-pet'
+import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 
 describe('Create Pet Use Case', () => {
   it('Should be able to create a pet', async () => {

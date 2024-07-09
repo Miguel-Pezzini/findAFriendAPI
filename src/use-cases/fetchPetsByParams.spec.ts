@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
-import { CreatePetUseCase } from './create-pet'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
+import { FetchPetByParams } from './fetchPetsByParams'
 
 describe('Create Pet Use Case', () => {
   it('Should be able to create a pet', async () => {
@@ -9,9 +9,9 @@ describe('Create Pet Use Case', () => {
     const inMemoryPetsRepository = new InMemoryPetsRepository(
       inMemoryOrgsRepository,
     )
-    const createPetUseCase = new CreatePetUseCase(inMemoryPetsRepository)
+    const fetchPetByParams = new FetchPetByParams(inMemoryPetsRepository)
 
-    const { pet } = await createPetUseCase.execute({
+    inMemoryPetsRepository.create({
       species: 'dog',
       name: 'Bob',
       dateOfBirth: new Date(),
@@ -22,6 +22,19 @@ describe('Create Pet Use Case', () => {
       orgId: '123',
     })
 
-    expect(pet.name).toEqual(expect.any(String))
+    inMemoryOrgsRepository.register({
+      id: '123',
+      user: 'SOS Animais',
+      passwordHash: '123456',
+      city: 'Sao paulo',
+      adress: 'Rua Machado, 10',
+      phone: '999999999',
+    })
+
+    const { pets } = await fetchPetByParams.execute({
+      city: 'Sao paulo',
+    })
+    console.log(pets)
+    expect(pets).toEqual(expect.any(Array))
   })
 })

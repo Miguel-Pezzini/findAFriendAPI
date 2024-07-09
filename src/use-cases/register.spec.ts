@@ -6,7 +6,6 @@ describe('Create Pet Use Case', () => {
   it('Should be able to create a pet', async () => {
     const inMemoryOrgsRepository = new InMemoryOrgsRepository()
     const registerUseCase = new RegisterUseCase(inMemoryOrgsRepository)
-
     const { org } = await registerUseCase.execute({
       user: 'SOS Animais',
       password: '123456',
@@ -14,7 +13,6 @@ describe('Create Pet Use Case', () => {
       adress: 'Rua Machado, 10',
       phone: '999999999',
     })
-
     expect(org.user).toEqual(expect.any(String))
   })
 })

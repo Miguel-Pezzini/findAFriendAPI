@@ -26,8 +26,4 @@ export class InMemoryOrgsRepository implements OrgsRepository {
 
     return org
   }
-
-  async findPetByCity(city: string) {
-    const allPetsFromCity = this.items.map((element) => element.city)
-  }
 }

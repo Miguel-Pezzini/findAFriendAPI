@@ -22,20 +22,27 @@ export class PrismaPetRepository implements PetsRepository {
     return pet
   }
 
-  findPetByCity(params: FindAllParams): Promise<
-    {
-      id: string
-      species: string
-      name: string
-      dateOfBirth: Date
-      color: string
-      weight: number
-      personality: string
-      photo: string
-      orgId: string
-    }[]
-  > {
-    throw new Error('Method not implemented.')
+  async findPetByCity(params: FindAllParams) {
+    const petsByCity = await prisma.pet.findMany({
+      where: {
+        species: params.species,
+        color: params.color,
+        weight: params.weight,
+        personality: params.personality,
+        org: {
+          city: {
+            contains: params.city,
+            mode: 'insensitive',
+          },
+        },
+      },
+    })
+
+    if (!petsByCity) {
+      throw new Error('Invalid city')
+    }
+
+    return petsByCity
   }
 
   async getPetById(id: string) {

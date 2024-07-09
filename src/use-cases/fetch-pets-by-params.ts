@@ -1,5 +1,6 @@
 import { PetsRepository } from '@/repositories/pets-repository'
 import { Pet } from '@prisma/client'
+import { InvalidCityProvided } from './errors/invalid-city-provided'
 
 interface RegisterUseCaseRequest {
   city: string
@@ -30,6 +31,10 @@ export class FetchPetByParams {
       weight,
       personality,
     })
+
+    if (!pets) {
+      throw new InvalidCityProvided()
+    }
 
     return { pets }
   }

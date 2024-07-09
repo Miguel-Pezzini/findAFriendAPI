@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { InMemoryPetsRepository } from '@/repositories/in-memory/in-memory-pets-repository'
 import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-repository'
-import { FetchPetByParams } from './fetchPetsByParams'
+import { FetchPetByParams } from './fetch-pets-by-params'
 
 describe('Create Pet Use Case', () => {
   it('Should be able to create a pet', async () => {

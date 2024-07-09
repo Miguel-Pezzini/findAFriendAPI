@@ -2,6 +2,7 @@ import { OrgsRepository } from '@/repositories/orgs-repository'
 import { Org } from '@prisma/client'
 import { hash } from 'bcryptjs'
 import { randomUUID } from 'crypto'
+import { UserAlredyExistsError } from './errors/user-alredy-exists'
 
 interface RegisterUseCaseRequest {
   user: string
@@ -30,7 +31,7 @@ export class RegisterUseCase {
     const orgAlredyExists = await this.orgsRepository.findByUser(user)
 
     if (orgAlredyExists) {
-      throw new Error('User alredy exists')
+      throw new UserAlredyExistsError()
     }
 
     const org = await this.orgsRepository.register({

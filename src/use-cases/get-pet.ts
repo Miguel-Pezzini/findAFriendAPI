@@ -1,5 +1,6 @@
 import { PetsRepository } from '@/repositories/pets-repository'
 import { Pet } from '@prisma/client'
+import { PetDoesNotFoundError } from './errors/pet-does-not-found-error'
 
 interface RegisterUseCaseRequest {
   id: string
@@ -16,6 +17,10 @@ export class GetPetUseCase {
     id,
   }: RegisterUseCaseRequest): Promise<RegisterUseCaseResponse> {
     const pet = await this.petsRepository.getPetById(id)
+
+    if (!pet) {
+      throw new PetDoesNotFoundError()
+    }
 
     return { pet }
   }

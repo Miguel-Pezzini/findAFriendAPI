@@ -2,7 +2,7 @@ import { OrgsRepository } from '@/repositories/orgs-repository'
 import { Org } from '@prisma/client'
 import { hash } from 'bcryptjs'
 import { randomUUID } from 'crypto'
-import { UserAlredyExistsError } from './errors/user-alredy-exists'
+import { UserAlredyExistsError } from './errors/user-alredy-exists-error'
 
 interface RegisterUseCaseRequest {
   user: string

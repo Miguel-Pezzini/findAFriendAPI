@@ -34,7 +34,6 @@ describe('Create Pet Use Case', () => {
     const { pets } = await fetchPetByParams.execute({
       city: 'Sao paulo',
     })
-    console.log(pets)
     expect(pets).toEqual(expect.any(Array))
   })
 })

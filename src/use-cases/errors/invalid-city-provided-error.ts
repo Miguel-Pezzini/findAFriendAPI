@@ -1,4 +1,4 @@
-export class InvalidCityProvided extends Error {
+export class InvalidCityProvidedError extends Error {
   constructor() {
     super('Invalid city provided')
   }

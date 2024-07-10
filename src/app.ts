@@ -8,7 +8,7 @@ import { env } from './env'
 export const app = fastify()
 
 app.register(fastifyJwt, {
-  secret: 'findafriendapi',
+  secret: 'testing',
 })
 
 app.register(orgsRoutes)

@@ -16,7 +16,7 @@ describe('Create Pet Use Case', () => {
       name: 'Bob',
       dateOfBirth: new Date(),
       color: 'brown',
-      weight: 20,
+      weight: '20',
       personality: 'friendly',
       photo: 'randomUrl',
       orgId: '123',

@@ -6,10 +6,10 @@ import { z } from 'zod'
 export async function register(request: FastifyRequest, reply: FastifyReply) {
   const bodySchema = z.object({
     user: z.string(),
-    password: z.string(),
+    password: z.string().min(6),
     city: z.string(),
     adress: z.string(),
-    phone: z.string(),
+    phone: z.string().min(10),
   })
 
   const { user, password, city, adress, phone } = bodySchema.parse(request.body)

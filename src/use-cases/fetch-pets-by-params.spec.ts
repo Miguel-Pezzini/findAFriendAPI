@@ -4,7 +4,7 @@ import { InMemoryOrgsRepository } from '@/repositories/in-memory/in-memory-orgs-
 import { FetchPetByParams } from './fetch-pets-by-params'
 
 describe('Create Pet Use Case', () => {
-  it('Should be able to create a pet', async () => {
+  it('Should be able to fetch a pet by city', async () => {
     const inMemoryOrgsRepository = new InMemoryOrgsRepository()
     const inMemoryPetsRepository = new InMemoryPetsRepository(
       inMemoryOrgsRepository,
@@ -16,7 +16,7 @@ describe('Create Pet Use Case', () => {
       name: 'Bob',
       dateOfBirth: new Date(),
       color: 'brown',
-      weight: 20,
+      weight: '20',
       personality: 'friendly',
       photo: 'randomUrl',
       orgId: '123',

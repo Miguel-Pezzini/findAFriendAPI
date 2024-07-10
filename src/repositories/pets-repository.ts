@@ -4,7 +4,7 @@ export interface FindAllParams {
   city: string
   species?: string
   color?: string
-  weight?: number
+  weight?: string
   personality?: string
 }
 

@@ -13,7 +13,6 @@ export async function index(request: FastifyRequest, reply: FastifyReply) {
   try {
     const getPetUseCase = makeGetPetUseCase()
     const pet = await getPetUseCase.execute({ id })
-    console.log(pet)
 
     reply.status(200).send(pet)
   } catch (err) {

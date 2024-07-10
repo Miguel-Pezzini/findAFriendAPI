@@ -8,7 +8,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
     name: z.string(),
     dateOfBirth: z.string().datetime(),
     color: z.string(),
-    weight: z.number(),
+    weight: z.string(),
     personality: z.string(),
     photo: z.string(),
   })
@@ -20,7 +20,7 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
 
   const createPetUseCase = makePetCreateUseCase()
 
-  const pet = createPetUseCase.execute({
+  const pet = await createPetUseCase.execute({
     species,
     name,
     dateOfBirth,

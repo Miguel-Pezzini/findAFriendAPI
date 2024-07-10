@@ -7,5 +7,5 @@ import { verifyJWT } from '@/http/middlewares/verifyJWT'
 export async function petsRoutes(app: FastifyInstance) {
   app.post('/pets/create', { onRequest: [verifyJWT] }, create)
   app.get('/pets/index/:id', index)
-  app.get('/pets/indexAll/:city', indexAll)
+  app.get('/pets/indexAll', indexAll)
 }

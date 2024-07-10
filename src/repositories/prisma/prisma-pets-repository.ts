@@ -38,10 +38,6 @@ export class PrismaPetRepository implements PetsRepository {
       },
     })
 
-    if (!petsByCity) {
-      throw new Error('Invalid city')
-    }
-
     return petsByCity
   }
 

@@ -6,7 +6,7 @@ interface CreatePetUseCaseRequest {
   name: string
   dateOfBirth: string | Date
   color: string
-  weight: number
+  weight: string
   personality: string
   photo: string
   orgId: string

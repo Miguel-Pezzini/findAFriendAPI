@@ -19,7 +19,7 @@ model Pet {
     name String
     dateOfBirth DateTime
     color String
-    weight Float
+    weight String
     personality String
     photo String
     orgId String

@@ -4,23 +4,20 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
 export async function indexAll(request: FastifyRequest, reply: FastifyReply) {
-  const paramsSchema = z.object({
+  const querysSchema = z.object({
+    species: z.string().optional(),
+    color: z.string().optional(),
+    weight: z.string().optional(),
+    personality: z.string().optional(),
     city: z.string(),
   })
-  const querysSchema = z.object({
-    species: z.string(),
-    color: z.string(),
-    weight: z.number(),
-    personality: z.string(),
-  })
-  const { city } = paramsSchema.parse(request.params)
-  const { species, color, weight, personality } = querysSchema.parse(
+  const { species, color, weight, personality, city } = querysSchema.parse(
     request.query,
   )
 
   try {
     const fetchPetsByParamsUseCase = makeFetchPetsByParamsUseCase()
-    const pets = fetchPetsByParamsUseCase.execute({
+    const pets = await fetchPetsByParamsUseCase.execute({
       city,
       species,
       color,

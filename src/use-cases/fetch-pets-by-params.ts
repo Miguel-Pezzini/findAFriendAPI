@@ -6,7 +6,7 @@ interface RegisterUseCaseRequest {
   city: string
   species?: string
   color?: string
-  weight?: number
+  weight?: string
   personality?: string
 }
 
@@ -31,7 +31,6 @@ export class FetchPetByParams {
       weight,
       personality,
     })
-
     if (!pets) {
       throw new InvalidCityProvidedError()
     }

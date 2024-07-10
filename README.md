@@ -4,7 +4,7 @@
 
 A findAfriendAPI foi criada para usar princípios SOLID utilizando de design patterns como use-cases, repositórios, testes unitários e testes e2e com o vitest. 
 
-## 🛠️ Construído com
+## 🛠️ Construído com:
 
 * [Typescript](https://www.typescriptlang.org/) - A linguagem de programação usada
 * [Fastify](https://fastify.dev/) - O framework web usado

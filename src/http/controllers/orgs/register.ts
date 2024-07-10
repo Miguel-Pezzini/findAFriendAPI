@@ -1,4 +1,4 @@
-import { InvalidCredentialsError } from '@/use-cases/errors/invalid-credentials-error'
+import { UserAlredyExistsError } from '@/use-cases/errors/user-alredy-exists-error'
 import { makeRegisterUseCase } from '@/use-cases/factories/make-register-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
@@ -17,15 +17,17 @@ export async function register(request: FastifyRequest, reply: FastifyReply) {
   try {
     const registerUseCase = makeRegisterUseCase()
 
-    registerUseCase.execute({
+    const org = await registerUseCase.execute({
       user,
       password,
       city,
       adress,
       phone,
     })
+
+    reply.status(201).send(org)
   } catch (err) {
-    if (err instanceof InvalidCredentialsError) {
+    if (err instanceof UserAlredyExistsError) {
       return reply.status(409).send({ message: err.message })
     }
   }

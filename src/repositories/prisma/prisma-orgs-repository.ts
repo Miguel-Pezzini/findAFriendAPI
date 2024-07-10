@@ -14,10 +14,6 @@ export class PrismaOrgsRepository implements OrgsRepository {
   async findByUser(user: string): Promise<Org | undefined> {
     const org = await prisma.org.findUnique({ where: { user } })
 
-    if (!org) {
-      throw new Error('user not found')
-    }
-
-    return org
+    return org || undefined
   }
 }

@@ -2,7 +2,7 @@
 
 ## Sobre o Projeto
 
-A findAfriendAPI foi criada para usar princípios SOLID utilizando de design patterns como use-cases, repositórios, testes unitários e testes e2e com o vitest. 
+A findAfriendAPI foi criada para usar princípios SOLID utilizando de design patterns como use-cases, repositórios, testes unitários, testes e2e, CI/CD. 
 
 ## 🛠️ Construído com:
 
